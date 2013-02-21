@@ -1,12 +1,12 @@
-set t_Co=256
-colorscheme lucius 
-LuciusBlack
-
 set nocompatible
 let mapleader=","
 
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
+set t_Co=256
+colorscheme lucius 
+LuciusBlack
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>

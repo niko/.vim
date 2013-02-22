@@ -1,8 +1,15 @@
 set nocompatible
-let mapleader=","
 
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
+let mapleader=","
+
+" dont write backup and swapfiles to current directory
+set bdir-=.
+set bdir+=/tmp
+set dir-=.
+set dir+=/tmp
 
 set t_Co=256
 colorscheme lucius 
@@ -25,7 +32,7 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
-nmap \ :nohlsearch<CR>
+map \ :nohlsearch<CR>
 
 " switch to last buffer with just :b
 nmap :b<CR> :b#<CR>
@@ -54,7 +61,7 @@ set backspace=indent,eol,start " allow backspacing over everything in insert mod
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set showmatch     " set show matching parenthesis
-
+set scrolloff=8
 
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
@@ -93,6 +100,9 @@ set magic
 
 " Automatically cd into the directory that the file is in
 set autochdir
+
+let g:netrw_listhide='\^\..*'
+map <leader>d :Ex<cr>
 
 set cursorline                  " Highlight current line
 augroup BgHighlight
@@ -154,15 +164,40 @@ function! WinMove(key)
   if (t:curwin == winnr()) "we havent moved
     if (match(a:key,'[jk]')) "were we going up/down
       wincmd v
-    else 
+    else
       wincmd s
     endif
     exec "wincmd ".a:key
   endif
 endfunction
 
-map <leader>h              :call WinMove('h')<cr>
-map <leader>k              :call WinMove('k')<cr>
-map <leader>l              :call WinMove('l')<cr>
-map <leader>j              :call WinMove('j')<cr>
+map <leader>h :call WinMove('h')<cr>
+map <leader>k :call WinMove('k')<cr>
+map <leader>l :call WinMove('l')<cr>
+map <leader>j :call WinMove('j')<cr>
+
+map <leader>f :Ack 
+map <leader>F :Ack <C-r><C-w><cr>
+
+" search for last search, put cursor where to enter replace string:
+map <leader>s :%s/<C-r><C-w>//gc<Left><Left><Left>
+vmap <leader>s :s/<C-r><C-w>//gc<Left><Left><Left>
+
+map <shift><up> <C-U>
+map <shift><down> <C-D>
+map <shift><left> b
+map <shift><right> w
+
+" center screen
+nmap <space> zz
+
+" center searches:
+nmap n nzz
+nmap N Nzz
+
+" restore cursor position in irb-vi
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 

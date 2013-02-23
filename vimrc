@@ -186,8 +186,8 @@ map <leader>k :call WinMove('k')<cr>
 map <leader>l :call WinMove('l')<cr>
 map <leader>j :call WinMove('j')<cr>
 
-map <leader>f :Ack 
-map <leader>F :Ack <C-r><C-w><cr>
+map <leader>f :Ag 
+map <leader>F :Ag <C-r><C-w><cr>
 
 " search for last search, put cursor where to enter replace string:
 map <leader>s :%s/<C-r><C-w>//gc<Left><Left><Left>

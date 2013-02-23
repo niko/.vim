@@ -12,8 +12,16 @@ set dir-=.
 set dir+=/tmp
 
 set t_Co=256
-colorscheme lucius 
-LuciusBlack
+" colorscheme lucius
+" LuciusBlack
+colorscheme solarized
+let &background=abs(strftime("%H")-12) < 6 ? 'light' : 'dark'
+" from 6 - 18 o'clock light color scheme, dark otherwise
+function! F()
+  let &background=abs(strftime("%H")-12) < 6 ? 'light' : 'dark'
+endfunction
+
+autocmd InsertEnter * call F()
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -25,6 +33,7 @@ nmap k gk
 
 set hidden
 set showcmd
+set undofile
 syntax on
 
 " searching:
@@ -32,6 +41,7 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
+set gdefault
 map \ :nohlsearch<CR>
 
 " switch to last buffer with just :b
@@ -158,7 +168,7 @@ endfunction
 noremap <Leader>p :call <SID>ToggleCopyPaste()<CR>
 inoremap <Leader>p :call <SID>ToggleCopyPaste()<CR>a
 
-function! WinMove(key) 
+function! WinMove(key)
   let t:curwin = winnr()
   exec "wincmd ".a:key
   if (t:curwin == winnr()) "we havent moved
@@ -194,6 +204,10 @@ nmap <space> zz
 " center searches:
 nmap n nzz
 nmap N Nzz
+
+" use tab instead of %
+nnoremap <tab> %
+vnoremap <tab> %
 
 " restore cursor position in irb-vi
 autocmd BufReadPost *

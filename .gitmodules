@@ -10,6 +10,7 @@
 [submodule "bundle/pb"]
 	path = bundle/pb
 	url = https://github.com/troydm/pb.vim/
+	ignore = untracked
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -28,6 +29,7 @@
 [submodule "bundle/vim-visual-surround"]
 	path = bundle/vim-visual-surround
 	url = git@github.com:mrinterweb/vim-visual-surround.git
+	ignore = untracked
 [submodule "bundle/vim-solarized"]
 	path = bundle/vim-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git

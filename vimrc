@@ -29,13 +29,15 @@ endfunction
 autocmd CursorHold * call AdjustColorScheme()
 autocmd CursorHold * Changed
 
+let g:indent_guides_enable_on_vim_startup=1
+
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " better linewise movement
-nmap j gj
-nmap k gk
+nnoremap j gj
+nnoremap k gk
 
 set hidden
 set showcmd
@@ -48,15 +50,15 @@ set ignorecase
 set smartcase
 set hlsearch
 set gdefault
-map \ :nohlsearch<CR>
+noremap \ :nohlsearch<CR>
 
 " switch to last buffer with just :b
-nmap :b<CR> :b#<CR>
+nnoremap :b<CR> :b#<CR>
 " similar:
-nmap <C-e> :e#<CR>
+nnoremap <C-e> :e#<CR>
 
 " list open buffers via CtrlP plugin:
-nmap ; :CtrlPBuffer<CR>
+nnoremap ; :CtrlPBuffer<CR>
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
@@ -94,7 +96,7 @@ function! <SID>StripTrailingWhitespace()
     let @/=_s
     call cursor(l, c)
 endfunction
-nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
+nnoremap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
 
 "make < > shifts keep selection
 vnoremap < <gv
@@ -108,8 +110,8 @@ filetype plugin on
 let      NERDShutUp=1
 let      NERDSpaceDelims=1
 
-map <Leader>7 <Leader>c<space>
-vmap <Leader>7 <Leader>c<space>gv
+noremap <Leader>7 <Leader>c<space>
+vnoremap <Leader>7 <Leader>c<space>gv
 
 
 " For regular expressions turn magic on
@@ -119,7 +121,7 @@ set magic
 set autochdir
 
 let g:netrw_listhide='\^\..*'
-map <leader>d :Ex<cr>
+noremap <leader>d :Ex<cr>
 
 set cursorline                  " Highlight current line
 augroup BgHighlight
@@ -188,29 +190,29 @@ function! WinMove(key)
   endif
 endfunction
 
-map <leader>h :call WinMove('h')<cr>
-map <leader>k :call WinMove('k')<cr>
-map <leader>l :call WinMove('l')<cr>
-map <leader>j :call WinMove('j')<cr>
+noremap <leader>h :call WinMove('h')<cr>
+noremap <leader>k :call WinMove('k')<cr>
+noremap <leader>l :call WinMove('l')<cr>
+noremap <leader>j :call WinMove('j')<cr>
 
-map <leader>f :Ag 
-map <leader>F :Ag <C-r><C-w><cr>
+noremap <leader>f :Ag 
+noremap <leader>F :Ag <C-r><C-w><cr>
 
 " search for last search, put cursor where to enter replace string:
-map <leader>s :%s/<C-r><C-w>//gc<Left><Left><Left>
-vmap <leader>s :s/<C-r><C-w>//gc<Left><Left><Left>
+noremap <leader>s :%s/<C-r><C-w>//gc<Left><Left><Left>
+vnoremap <leader>s :s/<C-r><C-w>//gc<Left><Left><Left>
 
-map <shift><up> <C-U>
-map <shift><down> <C-D>
-map <shift><left> b
-map <shift><right> w
+noremap <shift><up> <C-U>
+noremap <shift><down> <C-D>
+noremap <shift><left> b
+noremap <shift><right> w
 
 " select word
-map <space> viw
+noremap <space> viw
 
 " center searches:
-nmap n nzz
-nmap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
 
 " use tab instead of %
 nnoremap <tab> %

@@ -42,3 +42,6 @@
 [submodule "bundle/vim-changed"]
 	path = bundle/vim-changed
 	url = git@github.com:taku-o/vim-changed.git
+[submodule "bundle/vim-indent-guides"]
+	path = bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git

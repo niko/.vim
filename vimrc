@@ -3,6 +3,11 @@ set nocompatible
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
+runtime macros/matchit.vim
+
+" let g:changes_autocmd=1
+" let g:changes_verbose=0
+
 let mapleader=","
 
 " dont write backup and swapfiles to current directory
@@ -17,11 +22,12 @@ set t_Co=256
 colorscheme solarized
 let &background=abs(strftime("%H")-12) < 6 ? 'light' : 'dark'
 " from 6 - 18 o'clock light color scheme, dark otherwise
-function! F()
+function! AdjustColorScheme()
   let &background=abs(strftime("%H")-12) < 6 ? 'light' : 'dark'
 endfunction
 
-autocmd InsertEnter * call F()
+autocmd CursorHold * call AdjustColorScheme()
+autocmd CursorHold * Changed
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -96,6 +102,7 @@ vnoremap > >gv
 
 
 "autocmd Filetype ruby setlocal expandtab shiftwidth=2 softtabstop=2
+set shiftround
 filetype plugin on
 
 let      NERDShutUp=1
@@ -198,8 +205,8 @@ map <shift><down> <C-D>
 map <shift><left> b
 map <shift><right> w
 
-" center screen
-nmap <space> zz
+" select word
+map <space> viw
 
 " center searches:
 nmap n nzz

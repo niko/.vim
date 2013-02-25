@@ -224,3 +224,5 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
+hi NonText cterm=NONE ctermfg=NONE
+set lazyredraw

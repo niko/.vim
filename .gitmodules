@@ -43,3 +43,17 @@
 [submodule "bundle/vim-changed"]
 	path = bundle/vim-changed
 	url = git@github.com:taku-o/vim-changed.git
+[submodule "bundle/auto-pairs"]
+	path = bundle/auto-pairs
+	url = git://github.com/jiangmiao/auto-pairs.git
+[submodule "bundle/snipmate.vim"]
+	path = bundle/snipmate.vim
+	url = git://github.com/msanders/snipmate.vim.git
+	ignore = untracked
+[submodule "bundle/vim-sensible"]
+	path = bundle/vim-sensible
+	url = git://github.com/tpope/vim-sensible.git
+[submodule "bundle/vim-visualstar"]
+	path = bundle/vim-visualstar
+	url = https://github.com/thinca/vim-visualstar.git
+	ignore = untracked

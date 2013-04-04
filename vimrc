@@ -1,4 +1,6 @@
 set nocompatible
+set enc=utf-8
+set fenc=utf-8
 
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
